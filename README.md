@@ -1,6 +1,7 @@
 **Description:**
 ```
-Community fix for SignalRGB misidentifying the Ajazz AK820 as a Glorious GMMK 2 96%
+Community fix for SignalRGB misidentifying the Ajazz AK820 as a Glorious GMMK 2 96%.
+SignalRGB 2.5.74+ users must disable the bundled SRGBmods/qmk-plugins add-on.
 ```
 
 
@@ -14,6 +15,12 @@ spamming:
 ```
 hid.write.error - WriteFile: (0x00000001) Incorrect function
 ```
+
+> [!IMPORTANT]
+> SignalRGB 2.5.74 automatically enables
+> `https://github.com/SRGBmods/qmk-plugins`. That add-on also claims USB ID
+> `0x320F:0x505B` for the Glorious GMMK 2 96% and can override this AK820 plugin.
+> Disable that add-on using the instructions below.
 
 ## What this fixes
 
@@ -30,9 +37,14 @@ hid.write.error - WriteFile: (0x00000001) Incorrect function
    %userprofile%\Documents\WhirlwindFX\Plugins
    ```
    (create the `Plugins` folder if it doesn't exist)
-3. Fully restart SignalRGB
-4. Your AK820 should now be detected correctly. If not, go to the device's settings 
+3. In SignalRGB, open **Settings → Add-ons**
+4. Find `https://github.com/SRGBmods/qmk-plugins` and turn **Add-on Enabled** off
+5. Fully restart SignalRGB when prompted
+6. Your AK820 should now be detected correctly. If not, go to the device's settings
    in SignalRGB and manually set **Forced Model** to `AK820`.
+
+Disabling `SRGBmods/qmk-plugins` may also disable SignalRGB support supplied by that
+add-on for other QMK keyboards.
 
 ## Disclaimer
 
